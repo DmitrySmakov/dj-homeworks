@@ -11,13 +11,10 @@ def bus_stations(request):
     # также передайте в контекст список станций на странице
     with open('data-398-2018-08-30.csv', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
-        counter = 0
         lst = []
         for row in reader:
-            counter += 1
             dic = {'Name': row['Name'], 'Street': row['Street'], 'District': row['District']}
-            if counter <= 99000:
-                lst.append(dic)
+            lst.append(dic)
     CONTENT = lst
     page_number = int(request.GET.get("page",1))
     paginator = Paginator(CONTENT, 10)
