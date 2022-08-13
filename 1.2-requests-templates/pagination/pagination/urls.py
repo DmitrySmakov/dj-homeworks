@@ -15,7 +15,13 @@ Including another URLconf
 """
 
 from django.urls import path, include
+# без нее тоже работет
+# from stations.views import index ,bus_stations
 
 urlpatterns = [
     path('', include('stations.urls')),
+
+    # работает даже без этих путей и from stations.views import bus_stations
+    # path('', index),
+    # path('bus_stations/',bus_stations, name='bus-stations' ),
 ]

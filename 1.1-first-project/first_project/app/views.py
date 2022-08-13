@@ -41,3 +41,12 @@ def workdir_view(request):
     return render(request, 'app/list_dir.html', context={'listdir': listdir})
 
     raise NotImplemented
+
+
+def hello(request):
+    context = {
+        'test': 5,
+        'data': [1, 5, 8],
+        'val': 'hello',
+    }
+    return render(request, 'demo.html', context)

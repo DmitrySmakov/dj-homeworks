@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from copy import deepcopy
 
 DATA = {
     'omlet': {
@@ -28,3 +29,15 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def index(request):
+    return render(request, 'calculator/index.html', context = { 'recipe' : DATA} )
+
+def get_dish(request, dish_name):
+    servings = int(request.GET.get('servings',1))
+    dish = DATA[dish_name]
+    dish = deepcopy(dish)
+    for key, value in dish.items():
+        dish[key] = round(value * servings , 2 )
+    context = {'dish': dish, 'dish_name': dish_name, 'servings' : servings }
+    return render(request, 'calculator/dish.html', context)

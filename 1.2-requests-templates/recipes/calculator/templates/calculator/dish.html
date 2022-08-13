@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{dish_name}}</title>
 </head>
 <body>
-
+<h1> {{dish_name}} : {{servings}} порц. </h1>
+{% for ingredient, amount in dish.items %}
+    <p>{{ ingredient }}: {{amount}}  </p>
+{% endfor %}
 </body>
 </html>
